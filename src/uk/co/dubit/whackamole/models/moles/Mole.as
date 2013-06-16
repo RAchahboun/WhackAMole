@@ -7,10 +7,20 @@ package uk.co.dubit.whackamole.models.moles
 	 **/
 	public class Mole
 	{
-		private var _points:int = 60;
-		private var _showtime:int = 1000;
+		private var _points:int;
+		private var _showtime:int;
  		private var _dead:Boolean;
-
+		private var _type:int;
+		
+		public function Mole()
+		{
+			//Set up variables for standard mole
+			_points = 60;
+			_showtime = 1000;
+			_dead = false;
+			_type = 1;
+		}
+		
 		public function get points():int
 		{
 			return _points;
@@ -41,7 +51,18 @@ package uk.co.dubit.whackamole.models.moles
 		{
 			_dead = value;
 		}
-
+		
+		[Bindable]
+		public function get type():int
+		{
+			return _type;
+		}
+		
+		public function set type(value:int):void
+		{
+			_type = value;
+		}
+		
 		public function hit() : void
 		{
 			dead = true;

@@ -3,7 +3,6 @@ package uk.co.dubit.whackamole.models
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 	
-	import uk.co.dubit.whackamole.models.moles.Fire_Mole;
 	import uk.co.dubit.whackamole.models.moles.Mole;
 	/**
 	 * Models a hole which may or may not
@@ -14,8 +13,6 @@ package uk.co.dubit.whackamole.models
 	public class MoleHole
 	{
 		private var _mole:Mole;
-		private var _fireMole:Fire_Mole;
-		
 		private var _moleGame:MoleGame;
 		private var showTimer:Timer;
 		
@@ -45,78 +42,17 @@ package uk.co.dubit.whackamole.models
 		}
 		
 		[Bindable]
-		public function get fireMole():Fire_Mole
-		{
-			return _fireMole;
-		}
-		
-		public function set fireMole(value:Fire_Mole):void
-		{
-			_fireMole = value;
-		}
-		
-
-		[Bindable]
 		public function get occupantDead() : Boolean
 		{
-			if(mole != null) 
-			{
-				return (mole.dead); 
-			}
-			if(fireMole != null) 
-			{
-				return (fireMole.dead);
-			}
-			else
-			{
-				//Must be a zombie mole in the hole
-				return false;	//TODO: Change to zombie mole
-			}
+			return(mole && mole.dead);
 		}
 		
 		public function set occupantDead(value:Boolean) : void
 		{
-			if(mole) mole.dead = value; 
-			else
-			{
-				if(fireMole) fireMole.dead = value;
-				else
-				{
-					//Must be a Zombie mole
-				}
-			}
-			
+			if(mole) mole.dead = value;			
 		}
 		
-		public function populateWithStandardMole() : void
-		{
-			//Add the specified mole to this hole,
-			//and set up the timer to remove it after
-			//its showtime has elapsed
-			this.mole = new Mole;
-			showTimer.reset();
-			showTimer.delay = mole.showtime;
-			showTimer.start();
-			
-			//Reset other mole types to null
-			fireMole = null;
-		}
-		
-		public function populateWithFireMole() : void
-		{
-			//Add the specified mole to this hole,
-			//and set up the timer to remove it after
-			//its showtime has elapsed
-			this.fireMole = new Fire_Mole;
-			showTimer.reset();
-			showTimer.delay = fireMole.showtime;
-			showTimer.start();
-			
-			//Reset other mole types to null
-			mole = null;		
-		}
-		
-		public function populateWithZombieMole() : void
+		public function populate(mole:Mole) : void
 		{
 			//Add the specified mole to this hole,
 			//and set up the timer to remove it after
@@ -124,12 +60,34 @@ package uk.co.dubit.whackamole.models
 			this.mole = mole;
 			showTimer.reset();
 			showTimer.delay = mole.showtime;
+			showTimer.start();		
+		}
+		
+		public function populateWithFireMole() : void
+		{
+			//Add the specified mole to this hole,
+			//and set up the timer to remove it after
+			//its showtime has elapsed
+			//this.mole = new Fire_Mole;
+			showTimer.reset();
+			showTimer.delay = mole.showtime;
+			showTimer.start();	
+		}
+		
+		public function populateWithZombieMole() : void
+		{
+			//Add the specified mole to this hole,
+			//and set up the timer to remove it after
+			//its showtime has elapsed
+			//this.mole = new Zombie_Mole;
+			showTimer.reset();
+			showTimer.delay = mole.showtime;
 			showTimer.start();
 		}
 		
 		public function hit() : void
 		{
-			if((mole && !mole.dead) || (fireMole && !fireMole.dead))
+			if((mole && !mole.dead))
 			{
 				//Whack the mole, and if it results in a
 				//kill, rack up the score
@@ -141,22 +99,6 @@ package uk.co.dubit.whackamole.models
 						moleGame.addScore(mole.points);
 					}
 				}
-				else
-				{
-					if(fireMole)
-					{
-						fireMole.hit();
-						if(fireMole.dead)
-						{
-							moleGame.addScore(fireMole.points);
-							//Reset all possible mole types
-						}
-					}
-					else
-					{
-						//Must be a zombie mole
-					}
-				}
 			}
 		}
 		
@@ -164,7 +106,6 @@ package uk.co.dubit.whackamole.models
 		{
 			//Empty the hole
 			mole = null;
-			fireMole = null;
 		}
 	}
 }
