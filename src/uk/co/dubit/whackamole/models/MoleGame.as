@@ -8,7 +8,7 @@ package uk.co.dubit.whackamole.models
 	
 	import uk.co.dubit.whackamole.models.events.MoleGameEvent;
 	import uk.co.dubit.whackamole.models.moles.Mole;
-
+	import uk.co.dubit.whackamole.models.moles.Fire_Mole;
 	/**
 	 * Contains all the logic for the game itself; controls
 	 * the addition of moles, keeps track of the player's
@@ -86,7 +86,7 @@ package uk.co.dubit.whackamole.models
 			//an mole already in there
 			var moleHole:MoleHole = null;
 			
-			while(moleHole == null || moleHole.mole)
+			while(moleHole == null || moleHole.mole || moleHole.fireMole)
 			{
 				moleHole = moleHoles[ Math.floor(Math.random() * moleHoles.length) ];
 			}
@@ -98,7 +98,23 @@ package uk.co.dubit.whackamole.models
 		{
 			//Every time the timer fires, add a new mole
 			var moleHole:MoleHole = getFreeMoleHole();
-			moleHole.populate(new Mole());
+			var percentageChance:int = Math.random() * 100;
+			if(percentageChance <= 60)	//Between 0 and 60 - spawn a regular mole (60% chance)
+			{
+				moleHole.populateWithStandardMole();
+			}
+			else
+			{
+				if(percentageChance <= 85)	//Between 60 and 85 - spawn fire mole (25% chance)
+				{
+					moleHole.populateWithFireMole();
+				}
+				else	//Must be between 85 and 100 - spawn zombie mole (15% chance)
+				{
+					
+				}
+			}
+			
 		}
 		
 		private function onGameTimerComplete(event:TimerEvent) : void

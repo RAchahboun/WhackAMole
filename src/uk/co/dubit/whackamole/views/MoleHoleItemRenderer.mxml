@@ -11,8 +11,9 @@
 	<s:BorderContainer
 			styleName="roundedBorder stretchToContainer"
 			minHeight="0" minWidth="0"
-			useHandCursor="{  moleHole.mole != null }" buttonMode="true" mouseChildren="false" >
+			useHandCursor="{  (moleHole.mole != null) || (moleHole.fireMole != null) }" buttonMode="true" mouseChildren="false" >
 		<s:BitmapImage source="@Embed('/../assets/standard_mole.png')" visible="{ moleHole.mole != null }" horizontalCenter="0" verticalCenter="0" />
-		<s:BitmapImage source="@Embed('/../assets/skull_and_crossbones.png')" visible="{ moleHole.mole &amp;&amp; moleHole.mole.dead }" horizontalCenter="0" verticalCenter="0" />
+		<s:BitmapImage source="@Embed('/../assets/fire_mole.png')" visible="{ moleHole.fireMole != null }" horizontalCenter="0" verticalCenter="0" />
+		<s:BitmapImage source="@Embed('/../assets/skull_and_crossbones.png')" visible="{ (moleHole.mole &amp;&amp; moleHole.mole.dead) || (moleHole.fireMole &amp;&amp; moleHole.fireMole.dead) }" horizontalCenter="0" verticalCenter="0" />
 	</s:BorderContainer>
 </views:MoleHoleItemRendererBase>

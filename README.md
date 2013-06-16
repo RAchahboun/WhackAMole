@@ -59,7 +59,7 @@ When spawning a new mole, have a 60% chance of creating a standard mole, a 25% c
 
 
 *Your comments:*
-
+Initially I wanted to use an abstract mole class and have all moles derive from this abstract class, however further research indicated that this was either not possible or had to be 'hacked' in AS3. I then decided to try casting a mole as the standard type of mole, as effectively the classes are all alike, but this would mean I would lose the ability to distinguish between moles. Next I experimented with using an integer to denote a type of mole and set that mole in the populate function, however, this was not particularly readable and seemed to be inelegant. So I decided to write overloaded methods for the populate function, however, this again was either not possible or difficult to do in AS3, although it is possible to accept any type of parameter and deal with it later on using the * sybmbol I feel that this could lead to errors. Eventually I decided to allow space for each type of mole, as my efforts to cast fire moles and zombie moles as standard moles were leading to unexpected errors. This leads to a lot of code duplication, but should not affect readability to clients of the class.
 
 
 
