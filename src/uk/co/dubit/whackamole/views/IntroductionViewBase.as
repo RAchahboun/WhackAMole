@@ -14,5 +14,10 @@ package uk.co.dubit.whackamole.views
 		{
 			dispatchEvent(new IntroductionViewEvent(IntroductionViewEvent.START));
 		}
+		
+		protected function onDifficultyChange() :void
+		{
+		
+		}
 	}
 }
