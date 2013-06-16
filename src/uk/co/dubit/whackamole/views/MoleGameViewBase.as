@@ -7,7 +7,6 @@ package uk.co.dubit.whackamole.views
 	import spark.components.Group;
 	
 	import uk.co.dubit.whackamole.models.MoleGame;
-	
 	public class MoleGameViewBase extends Group
 	{
 		public var startAnimation:Sequence;
@@ -38,5 +37,6 @@ package uk.co.dubit.whackamole.views
 		{
 			_moleGame.start()
 		}
+			
 	}
 }

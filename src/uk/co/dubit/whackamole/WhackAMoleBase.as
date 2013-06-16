@@ -6,6 +6,8 @@ package uk.co.dubit.whackamole
 	import spark.components.Group;
 	
 	import uk.co.dubit.whackamole.models.MoleGame;
+	import uk.co.dubit.whackamole.models.events.MoleGameEvent;
+	import uk.co.dubit.whackamole.views.GameOverView;
 	import uk.co.dubit.whackamole.views.IntroductionView;
 	import uk.co.dubit.whackamole.views.MoleGameView;
 	import uk.co.dubit.whackamole.views.events.IntroductionViewEvent;
@@ -33,17 +35,22 @@ package uk.co.dubit.whackamole
 		
 		protected function onIntroductionViewStart(event:IntroductionViewEvent):void
 		{
-			event.target.removeEventListener(event.type, arguments.callee);
-			
+			event.target.removeEventListener(event.type, arguments.callee);	
 			loadMainGame();
 		}
 		
 		public function loadMainGame() : void
 		{
 			var moleGameView:MoleGameView = new MoleGameView();
+			moleGameView.addEventListener(MoleGameEvent.GAME_OVER, onGameOver);
 			moleGameView.moleGame = new MoleGame();
-
 			loadView(moleGameView);
+		}
+		
+		private function onGameOver(event:MoleGameEvent) : void
+		{
+			event.target.removeEventListener(event.type, arguments.callee);	
+			loadMainGame();
 		}
 		
 		private function loadView(view:Group) : void
