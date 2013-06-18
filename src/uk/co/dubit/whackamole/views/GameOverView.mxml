@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<views:IntroductionViewBase xmlns:fx="http://ns.adobe.com/mxml/2009" 
+<views:GameOverViewBase xmlns:fx="http://ns.adobe.com/mxml/2009" 
 							xmlns:s="library://ns.adobe.com/flex/spark" 
 							xmlns:mx="library://ns.adobe.com/flex/mx"
 							xmlns:views="uk.co.dubit.whackamole.views.*"
@@ -15,7 +15,7 @@
 		</s:BorderContainer>
 		
 		<s:BorderContainer styleName="roundedBorder" minHeight="0" minWidth="0" width="100%" height="100%" >
-			<s:Label text="Game Over! Want to play again?"
+			<s:Label text="Game Over! Your Score was { _endScore }. Want to play again?"
 					 horizontalCenter="0" verticalCenter="0" width="60%" textAlign="center" />
 			<s:VGroup horizontalCenter="0" bottom="45">
 				<s:RadioButton groupName = "difficulty"
@@ -36,4 +36,4 @@
 		
 	</s:VGroup>
 	
-</views:IntroductionViewBase>
+</views:GameOverViewBase>

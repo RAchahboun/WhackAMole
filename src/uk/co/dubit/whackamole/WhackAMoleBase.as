@@ -46,9 +46,12 @@ package uk.co.dubit.whackamole
 			loadView(moleGameView);
 		}
 		
-		public function gameOver(event:MoleGameEvent) : void
+		public function gameOver(score:int) : void
 		{
-			loadMainGame();
+			var gameOverView:GameOverView = new GameOverView();
+			gameOverView.endScore = score;
+			loadView(gameOverView);
+			//loadMainGame();
 		}
 		
 		private function loadView(view:Group) : void

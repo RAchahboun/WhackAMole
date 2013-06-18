@@ -123,7 +123,7 @@ package uk.co.dubit.whackamole.models
 		private function onGameTimerComplete(event:TimerEvent) : void
 		{
 			//dispatchEvent(new MoleGameEvent(MoleGameEvent.GAME_OVER, score));
-			gameApp.gameOver(new MoleGameEvent(MoleGameEvent.GAME_OVER, score));
+			gameApp.gameOver(score);
 		}
 	}
 }
