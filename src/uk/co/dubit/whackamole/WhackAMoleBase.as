@@ -21,7 +21,6 @@ package uk.co.dubit.whackamole
 				
 		public function WhackAMoleBase() : void
 		{
-			super();
 			addEventListener(FlexEvent.CREATION_COMPLETE, onCreationComplete);
 		}
 		
@@ -50,6 +49,7 @@ package uk.co.dubit.whackamole
 		{
 			var gameOverView:GameOverView = new GameOverView();
 			gameOverView.endScore = score;
+			gameOverView.addEventListener(IntroductionViewEvent.START, onIntroductionViewStart);	//Listen for game restart
 			loadView(gameOverView);
 			//loadMainGame();
 		}
