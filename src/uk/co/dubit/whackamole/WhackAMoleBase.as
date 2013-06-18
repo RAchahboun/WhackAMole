@@ -42,14 +42,12 @@ package uk.co.dubit.whackamole
 		public function loadMainGame() : void
 		{
 			var moleGameView:MoleGameView = new MoleGameView();
-			moleGameView.addEventListener(MoleGameEvent.GAME_OVER, onGameOver);
-			moleGameView.moleGame = new MoleGame();
+			moleGameView.moleGame = new MoleGame(this);
 			loadView(moleGameView);
 		}
 		
-		private function onGameOver(event:MoleGameEvent) : void
+		public function gameOver(event:MoleGameEvent) : void
 		{
-			event.target.removeEventListener(event.type, arguments.callee);	
 			loadMainGame();
 		}
 		

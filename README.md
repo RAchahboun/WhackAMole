@@ -19,7 +19,7 @@ It should also include a button labelled 'Play again' that will start a new game
 
 
 *Your comments:*
-
+I initially experimented with trying to use events to trigger the game over, however, I had difficulty in dispatching an event in the MoleGame object and capturing it in the WhackAMoleBase object. As the majority of my university work has been done in C++ events are still a relatively new concept to me. Given that non base variables are passed by reference in AS3 I decided to pass the address of the WhackAMoleBase class to the MoleGame object. I could then send a message directly to the WhackAMoleBase object, which could handle the game over routine.
 
 
 

@@ -6,11 +6,12 @@ package uk.co.dubit.whackamole.models
 	
 	import mx.collections.ArrayCollection;
 	
+	import uk.co.dubit.whackamole.WhackAMoleBase;
 	import uk.co.dubit.whackamole.models.events.MoleGameEvent;
-	
-	import uk.co.dubit.whackamole.models.moles.Mole;
 	import uk.co.dubit.whackamole.models.moles.Fire_Mole;
+	import uk.co.dubit.whackamole.models.moles.Mole;
 	import uk.co.dubit.whackamole.models.moles.Zombie_Mole;
+
 	/**
 	 * Contains all the logic for the game itself; controls
 	 * the addition of moles, keeps track of the player's
@@ -26,17 +27,18 @@ package uk.co.dubit.whackamole.models
 		private var _moleHoles:ArrayCollection = new ArrayCollection();
 		
 		private var gameTimer:Timer;
-		
+		private var gameApp:WhackAMoleBase;
 		private const GAME_TIMER_DELAY:int = 400;
 		private const TOTAL_MOLES:int = 60;
 		
-		public function MoleGame()
+		public function MoleGame(application:WhackAMoleBase)
 		{
 			//Set up the game timer; when it fires a new
 			//mole is added
 			gameTimer = new Timer(GAME_TIMER_DELAY, TOTAL_MOLES);
 			gameTimer.addEventListener(TimerEvent.TIMER, onGameTimer);
 			gameTimer.addEventListener(TimerEvent.TIMER_COMPLETE, onGameTimerComplete);
+			gameApp = application;	//Should be passed by reference
 		}
 
 		[Bindable]
@@ -115,13 +117,13 @@ package uk.co.dubit.whackamole.models
 				{
 					moleHole.populate(new Zombie_Mole);
 				}
-			}
-			
+			}			
 		}
 		
 		private function onGameTimerComplete(event:TimerEvent) : void
 		{
-			dispatchEvent(new MoleGameEvent(MoleGameEvent.GAME_OVER, score));
+			//dispatchEvent(new MoleGameEvent(MoleGameEvent.GAME_OVER, score));
+			gameApp.gameOver(new MoleGameEvent(MoleGameEvent.GAME_OVER, score));
 		}
 	}
 }
