@@ -25,7 +25,8 @@
 			<s:RadioButton groupName = "difficulty"
 						   id = "medium"
 						   label = "Medium"
-						   width = "75"/>
+						   width = "75"
+						   selected="true"/>
 			<s:RadioButton groupName ="difficulty"
 						   id = "hard"
 						   label = "Hard"

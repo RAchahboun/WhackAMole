@@ -13,6 +13,6 @@ package uk.co.dubit.whackamole.views
 		protected function onStartButtonClick() : void
 		{
 			dispatchEvent(new IntroductionViewEvent(IntroductionViewEvent.START));
-		}
+		}		
 	}
 }
