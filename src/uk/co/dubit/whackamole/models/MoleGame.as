@@ -7,7 +7,6 @@ package uk.co.dubit.whackamole.models
 	import mx.collections.ArrayCollection;
 	
 	import uk.co.dubit.whackamole.WhackAMoleBase;
-	import uk.co.dubit.whackamole.models.events.MoleGameEvent;
 	import uk.co.dubit.whackamole.models.moles.Fire_Mole;
 	import uk.co.dubit.whackamole.models.moles.Mole;
 	import uk.co.dubit.whackamole.models.moles.Zombie_Mole;
@@ -28,17 +27,44 @@ package uk.co.dubit.whackamole.models
 		
 		private var gameTimer:Timer;
 		private var gameApp:WhackAMoleBase;
+		private var _moleSpawnModifier:int = 0;
+		private var _moleLifeModifier:int = 0;
 		private const GAME_TIMER_DELAY:int = 400;
 		private const TOTAL_MOLES:int = 60;
 		
-		public function MoleGame(application:WhackAMoleBase)
+		//Difficulty constants
+		private const EASY_SPAWN_MODIFIER:int = 200;
+		private const HARD_SPAWN_MODIFIER:int = -200;
+		private const EASY_LIFE_MODIFIER:int = 50;
+		private const HARD_LIFE_MODIFIER:int = -50;
+		
+		public function MoleGame(application:WhackAMoleBase, difficulty:int)
 		{
 			//Set up the game timer; when it fires a new
 			//mole is added
-			gameTimer = new Timer(GAME_TIMER_DELAY, TOTAL_MOLES);
+			gameTimer = new Timer(GAME_TIMER_DELAY + _moleSpawnModifier, TOTAL_MOLES);
 			gameTimer.addEventListener(TimerEvent.TIMER, onGameTimer);
 			gameTimer.addEventListener(TimerEvent.TIMER_COMPLETE, onGameTimerComplete);
 			gameApp = application;	//Should be passed by reference
+			
+			switch(difficulty)
+			{
+				//Set modifiers to easy setting
+				case 1:
+				{
+					_moleLifeModifier = EASY_SPAWN_MODIFIER;
+					_moleSpawnModifier = EASY_LIFE_MODIFIER;
+					break;
+				}
+				
+				//Set modifiers to medium setting
+				case 3:
+				{
+					_moleLifeModifier = HARD_SPAWN_MODIFIER;
+					_moleSpawnModifier = HARD_LIFE_MODIFIER;
+					break;
+				}	
+			}
 		}
 
 		[Bindable]
@@ -71,7 +97,7 @@ package uk.co.dubit.whackamole.models
 			{
 				//A moleHole needs a reference to the game
 				//so it can react appropriately to clicks
-				var moleHole:MoleHole = new MoleHole(this);
+				var moleHole:MoleHole = new MoleHole(this, _moleSpawnModifier);
 				
 				moleHoles.addItem(moleHole);
 			}

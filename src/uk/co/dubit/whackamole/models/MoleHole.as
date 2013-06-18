@@ -15,13 +15,14 @@ package uk.co.dubit.whackamole.models
 		private var _mole:Mole;
 		private var _moleGame:MoleGame;
 		private var showTimer:Timer;
+		private const SHOW_TIME:int = 1000;
 		
-		public function MoleHole(moleGame:MoleGame)
+		public function MoleHole(moleGame:MoleGame, showTimeModifier:int)
 		{
 			_moleGame = moleGame;
 			//This time controls the amount of time
 			//a mole fills this hole for
-			showTimer = new Timer(1000, 1);
+			showTimer = new Timer(SHOW_TIME + showTimeModifier, 1);
 			showTimer.addEventListener(TimerEvent.TIMER_COMPLETE, onShowTimerComplete);
 		}
 		

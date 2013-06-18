@@ -16,9 +16,7 @@ package uk.co.dubit.whackamole.views
 		{
 			_endScore = value;
 		}
-		
-		
-		
+			
 		protected function onStartButtonClick() : void
 		{
 			dispatchEvent(new IntroductionViewEvent(IntroductionViewEvent.START));
