@@ -53,17 +53,16 @@ package uk.co.dubit.whackamole
 		
 		protected function onIntroductionViewStart(event:IntroductionViewEvent):void
 		{
-			event.target.removeEventListener(event.type, arguments.callee);	
+			event.target.removeEventListener(event.type, arguments.callee);
+			//Stop listening for difficulty changes, the game is starting
+			event.target.removeEventListener(DifficultyChangeEvent.EASY_SELECTED, onEasySelection);
+			event.target.removeEventListener(DifficultyChangeEvent.MEDIUM_SELECTED, onMediumSelection);
+			event.target.removeEventListener(DifficultyChangeEvent.HARD_SELECTED, onHardSelection);
 			loadMainGame();
 		}
 		
 		public function loadMainGame() : void
-		{
-			//Stop listening for difficulty changes, the game is starting
-			removeEventListener(DifficultyChangeEvent.EASY_SELECTED, onEasySelection);
-			removeEventListener(DifficultyChangeEvent.MEDIUM_SELECTED, onMediumSelection);
-			removeEventListener(DifficultyChangeEvent.HARD_SELECTED, onHardSelection);
-			
+		{		
 			var moleGameView:MoleGameView = new MoleGameView();
 			moleGameView.moleGame = new MoleGame(this, _currentDifficulty);
 			loadView(moleGameView);
@@ -74,6 +73,11 @@ package uk.co.dubit.whackamole
 			var gameOverView:GameOverView = new GameOverView();
 			gameOverView.endScore = score;
 			gameOverView.addEventListener(IntroductionViewEvent.START, onIntroductionViewStart);	//Listen for game restart
+			//Listen for difficulty changes
+			gameOverView.addEventListener(DifficultyChangeEvent.EASY_SELECTED, onEasySelection);
+			gameOverView.addEventListener(DifficultyChangeEvent.MEDIUM_SELECTED, onMediumSelection);
+			gameOverView.addEventListener(DifficultyChangeEvent.HARD_SELECTED, onHardSelection);
+			
 			loadView(gameOverView);
 			//loadMainGame();
 		}

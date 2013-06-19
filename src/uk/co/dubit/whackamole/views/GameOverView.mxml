@@ -21,16 +21,19 @@
 				<s:RadioButton groupName = "difficulty"
 							   id="easy"
 							   label = "Easy"
-							   width = "50"/>
+							   width = "50"
+							   click="onEasySelected()"/>
 				<s:RadioButton groupName = "difficulty"
 							   id = "medium"
 							   label = "Medium"
 							   width = "75"
-							   selected="true"/>
+							   selected="true"
+							   click="onMediumSelected()"/>
 				<s:RadioButton groupName ="difficulty"
 							   id = "hard"
 							   label = "Hard"
-							   width = "50"/>
+							   width = "50"
+							   click="onHardSelected()"/>
 			</s:VGroup>
 			<s:Button id="startButton" click="onStartButtonClick()" label="Start!" horizontalCenter="0" bottom="10"/>
 		</s:BorderContainer>
