@@ -7,6 +7,7 @@ package uk.co.dubit.whackamole.models
 	import mx.collections.ArrayCollection;
 	
 	import uk.co.dubit.whackamole.WhackAMoleBase;
+	import uk.co.dubit.whackamole.achievments.achievement_manager.Achievement_Manager;
 	import uk.co.dubit.whackamole.models.moles.Fire_Mole;
 	import uk.co.dubit.whackamole.models.moles.Mole;
 	import uk.co.dubit.whackamole.models.moles.Zombie_Mole;
@@ -27,6 +28,7 @@ package uk.co.dubit.whackamole.models
 		
 		private var gameTimer:Timer;
 		private var gameApp:WhackAMoleBase;
+		private var _achievementManager:Achievement_Manager;
 		private var _moleSpawnModifier:int = 0;
 		private var _moleLifeModifier:int = 0;
 		private const GAME_TIMER_DELAY:int = 400;

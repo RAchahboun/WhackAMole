@@ -64,28 +64,6 @@ package uk.co.dubit.whackamole.models
 			showTimer.start();		
 		}
 		
-		public function populateWithFireMole() : void
-		{
-			//Add the specified mole to this hole,
-			//and set up the timer to remove it after
-			//its showtime has elapsed
-			//this.mole = new Fire_Mole;
-			showTimer.reset();
-			showTimer.delay = mole.showtime;
-			showTimer.start();	
-		}
-		
-		public function populateWithZombieMole() : void
-		{
-			//Add the specified mole to this hole,
-			//and set up the timer to remove it after
-			//its showtime has elapsed
-			//this.mole = new Zombie_Mole;
-			showTimer.reset();
-			showTimer.delay = mole.showtime;
-			showTimer.start();
-		}
-		
 		public function hit() : void
 		{
 			if((mole && !mole.dead))

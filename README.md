@@ -32,7 +32,7 @@ Modify the Introduction screen to allow the user to choose one of three difficul
 
 
 *Your comments:*
-
+I took a more event driven approach with the difficulty settings. The user can select a radio button to change difficulty before the game begins, each time a radio button is clicked then an event is sent indicating which difficulty is now selected. The selected difficulty is then passed to the mole game constructor as an integer, 1 representing easy, 2 representing medium and 3 representing hard. The game then modifies the spawn rate of moles and the time they spend on screen. For the easy mode moles spawn slower and last longer, giving the player more time to whack a mole. For the harder difficulty moles appear faster and spend less time on screen.
 
 
 
@@ -92,8 +92,7 @@ Criteria required: Miss more than 30 moles during a game
 
 
 *Your comments:*
-
-
+I decided to make a base class which comprised of required data for all achievements (such as name, description, completion status and if their progress persisted between games in a session, or if the achievement had to be completed in a single game. Because abstract classes are not possible in AS3 I used comments to make clear that this class should not be instantiated. I also implemented an achievement manager class, that will handle which achievents are to be updated on certain events.
 
 
 

@@ -5,13 +5,13 @@ package uk.co.dubit.whackamole
 	import spark.components.Application;
 	import spark.components.Group;
 	
+	import uk.co.dubit.whackamole.achievments.achievement_manager.Achievement_Manager;
 	import uk.co.dubit.whackamole.models.MoleGame;
 	import uk.co.dubit.whackamole.views.GameOverView;
 	import uk.co.dubit.whackamole.views.IntroductionView;
 	import uk.co.dubit.whackamole.views.MoleGameView;
 	import uk.co.dubit.whackamole.views.events.DifficultyChangeEvent;
 	import uk.co.dubit.whackamole.views.events.IntroductionViewEvent;
-
 	/**
 	 * A small whack-a-mole game based around MVC principles
 	 */
@@ -19,7 +19,6 @@ package uk.co.dubit.whackamole
 	{
 		public var viewContainer:Group;
 		private var _currentDifficulty:int = 2;
-		
 		public function WhackAMoleBase() : void
 		{
 			addEventListener(FlexEvent.CREATION_COMPLETE, onCreationComplete);
