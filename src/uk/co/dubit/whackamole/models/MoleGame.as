@@ -25,10 +25,10 @@ package uk.co.dubit.whackamole.models
 		
 		private var _score:int = 0;
 		private var _moleHoles:ArrayCollection = new ArrayCollection();
-		
+		private var _achievementManager:Achievement_Manager;
 		private var gameTimer:Timer;
 		private var gameApp:WhackAMoleBase;
-		private var _achievementManager:Achievement_Manager;
+		
 		private var _moleSpawnModifier:int = 0;
 		private var _moleLifeModifier:int = 0;
 		private const GAME_TIMER_DELAY:int = 400;
@@ -40,7 +40,7 @@ package uk.co.dubit.whackamole.models
 		private const EASY_LIFE_MODIFIER:int = 50;
 		private const HARD_LIFE_MODIFIER:int = -50;
 		
-		public function MoleGame(application:WhackAMoleBase, difficulty:int)
+		public function MoleGame(application:WhackAMoleBase, difficulty:int, achievementManager:Achievement_Manager)
 		{
 			//Set up the game timer; when it fires a new
 			//mole is added
@@ -48,7 +48,7 @@ package uk.co.dubit.whackamole.models
 			gameTimer.addEventListener(TimerEvent.TIMER, onGameTimer);
 			gameTimer.addEventListener(TimerEvent.TIMER_COMPLETE, onGameTimerComplete);
 			gameApp = application;	//Should be passed by reference
-			
+			_achievementManager = achievementManager;
 			switch(difficulty)
 			{
 				//Set modifiers to easy setting
@@ -99,7 +99,7 @@ package uk.co.dubit.whackamole.models
 			{
 				//A moleHole needs a reference to the game
 				//so it can react appropriately to clicks
-				var moleHole:MoleHole = new MoleHole(this, _moleSpawnModifier);
+				var moleHole:MoleHole = new MoleHole(this, _moleSpawnModifier, _achievementManager);
 				
 				moleHoles.addItem(moleHole);
 			}
@@ -151,6 +151,9 @@ package uk.co.dubit.whackamole.models
 		private function onGameTimerComplete(event:TimerEvent) : void
 		{
 			//dispatchEvent(new MoleGameEvent(MoleGameEvent.GAME_OVER, score));
+			_achievementManager.checkEndOfRoundAchievements();
+			_achievementManager.reset();
+			trace("Reset!");
 			gameApp.gameOver(score);
 		}
 	}

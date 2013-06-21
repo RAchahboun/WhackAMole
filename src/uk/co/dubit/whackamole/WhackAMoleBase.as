@@ -12,6 +12,7 @@ package uk.co.dubit.whackamole
 	import uk.co.dubit.whackamole.views.MoleGameView;
 	import uk.co.dubit.whackamole.views.events.DifficultyChangeEvent;
 	import uk.co.dubit.whackamole.views.events.IntroductionViewEvent;
+
 	/**
 	 * A small whack-a-mole game based around MVC principles
 	 */
@@ -19,9 +20,12 @@ package uk.co.dubit.whackamole
 	{
 		public var viewContainer:Group;
 		private var _currentDifficulty:int = 2;
+		private var _achievementManager:Achievement_Manager;
+		
 		public function WhackAMoleBase() : void
 		{
 			addEventListener(FlexEvent.CREATION_COMPLETE, onCreationComplete);
+			_achievementManager = new Achievement_Manager();
 		}
 		
 		public function loadIntroduction() : void
@@ -63,7 +67,7 @@ package uk.co.dubit.whackamole
 		public function loadMainGame() : void
 		{		
 			var moleGameView:MoleGameView = new MoleGameView();
-			moleGameView.moleGame = new MoleGame(this, _currentDifficulty);
+			moleGameView.moleGame = new MoleGame(this, _currentDifficulty, _achievementManager);
 			loadView(moleGameView);
 		}
 		

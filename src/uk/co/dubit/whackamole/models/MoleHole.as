@@ -3,6 +3,7 @@ package uk.co.dubit.whackamole.models
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 	
+	import uk.co.dubit.whackamole.achievments.achievement_manager.Achievement_Manager;
 	import uk.co.dubit.whackamole.models.moles.Mole;
 	/**
 	 * Models a hole which may or may not
@@ -16,14 +17,16 @@ package uk.co.dubit.whackamole.models
 		private var _moleGame:MoleGame;
 		private var showTimer:Timer;
 		private const SHOW_TIME:int = 1000;
+		private var _achievementManager:Achievement_Manager;
 		
-		public function MoleHole(moleGame:MoleGame, showTimeModifier:int)
+		public function MoleHole(moleGame:MoleGame, showTimeModifier:int, achievementManager:Achievement_Manager)
 		{
 			_moleGame = moleGame;
 			//This time controls the amount of time
 			//a mole fills this hole for
 			showTimer = new Timer(SHOW_TIME + showTimeModifier, 1);
 			showTimer.addEventListener(TimerEvent.TIMER_COMPLETE, onShowTimerComplete);
+			_achievementManager = achievementManager;
 		}
 		
 		public function get moleGame():MoleGame
@@ -70,16 +73,38 @@ package uk.co.dubit.whackamole.models
 			{
 				//Whack the mole, and if it results in a
 				//kill, rack up the score
-				if(mole)
+				mole.hit();
+				if(mole.dead)
 				{
-					mole.hit();
-					if(mole.dead)
+					moleGame.addScore(mole.points);
+					switch(mole.type)
 					{
-						moleGame.addScore(mole.points);
+						case 1:
+						{
+							_achievementManager.moleKilled();
+							break;
+						}
+						
+						case 2:
+						{
+							_achievementManager.fireMoleKilled();
+							break;
+						}
+						
+						case 3:
+						{
+							_achievementManager.zombieMoleKilled();
+							break;
+						}
 					}
 				}
 			}
+			else
+			{
+				_achievementManager.moleMissed();
+			}
 		}
+
 		
 		private function onShowTimerComplete(event:TimerEvent) : void
 		{

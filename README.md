@@ -92,7 +92,7 @@ Criteria required: Miss more than 30 moles during a game
 
 
 *Your comments:*
-I decided to make a base class which comprised of required data for all achievements (such as name, description, completion status and if their progress persisted between games in a session, or if the achievement had to be completed in a single game. Because abstract classes are not possible in AS3 I used comments to make clear that this class should not be instantiated. I also implemented an achievement manager class, that will handle which achievents are to be updated on certain events.
+I decided to make a base class which comprised of required data for all achievements (such as name, description, completion status and if their progress persisted between games in a session, or if the achievement had to be completed in a single game. Because abstract classes are not possible in AS3 I used comments to make clear that this class should not be instantiated. I also implemented an achievement manager class, which will handle which achievents are to be updated on certain events. 
 
 
 
