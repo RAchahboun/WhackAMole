@@ -62,8 +62,49 @@
 				</s:BorderContainer>
 				
 				<s:BorderContainer styleName="roundedBorder" minHeight="0" minWidth="0" width="100%" height="100%" >
-					
-				</s:BorderContainer>	
+					<s:VGroup id="achievementGroup">
+						<s:BorderContainer styleName="roundedBorder" minHeight="0" minWidth="0" width="150" height="30" backgroundColor="{setAchievementBackgroundColour(&quot;apprentice&quot;)}">
+							<s:Label text="{(_achievementManager.getAchievementWithKey(&quot;apprentice&quot;)).name}" left="5" top="3" fontSize="10" />
+							<s:Label text="{(_achievementManager.getAchievementWithKey(&quot;apprentice&quot;)).description}" left="5" bottom="3" fontSize="8" />
+						</s:BorderContainer>
+						
+						<s:BorderContainer styleName="roundedBorder" minHeight="0" minWidth="0" width="150" height="30" backgroundColor="{setAchievementBackgroundColour(&quot;master&quot;)}">
+							<s:Label text="{(_achievementManager.getAchievementWithKey(&quot;master&quot;)).name}" left="5" top="3" fontSize="10" />
+							<s:Label text="{(_achievementManager.getAchievementWithKey(&quot;master&quot;)).description}" left="5" bottom="3" fontSize="8" />
+						</s:BorderContainer>
+						
+						<s:BorderContainer styleName="roundedBorder" minHeight="0" minWidth="0" width="150" height="30" backgroundColor="{setAchievementBackgroundColour(&quot;moleMassacre&quot;)}">
+							<s:Label text="{(_achievementManager.getAchievementWithKey(&quot;moleMassacre&quot;)).name}" left="5" top="3" fontSize="10" />
+							<s:Label text="{(_achievementManager.getAchievementWithKey(&quot;moleMassacre&quot;)).description}" left="5" bottom="3" fontSize="8" />
+						</s:BorderContainer>
+						
+						<s:BorderContainer styleName="roundedBorder" minHeight="0" minWidth="0" width="150" height="30" backgroundColor="{setAchievementBackgroundColour(&quot;fireman&quot;)}">
+							<s:Label text="{(_achievementManager.getAchievementWithKey(&quot;fireman&quot;)).name}" left="5" top="3" fontSize="10" />
+							<s:Label text="{(_achievementManager.getAchievementWithKey(&quot;fireman&quot;)).description}" left="5" bottom="3" fontSize="8" />
+						</s:BorderContainer>
+						
+						<s:BorderContainer styleName="roundedBorder" minHeight="0" minWidth="0" width="150" height="30" backgroundColor="{setAchievementBackgroundColour(&quot;apocolyptica&quot;)}">
+							<s:Label text="{(_achievementManager.getAchievementWithKey(&quot;apocolyptica&quot;)).name}" left="5" top="3" fontSize="10" />
+							<s:Label text="{(_achievementManager.getAchievementWithKey(&quot;apocolyptica&quot;)).description}" left="5" bottom="3" fontSize="8" />
+						</s:BorderContainer>
+						
+						<s:BorderContainer styleName="roundedBorder" minHeight="0" minWidth="0" width="150" height="30" backgroundColor="{setAchievementBackgroundColour(&quot;softTouch&quot;)}">
+							<s:Label text="{(_achievementManager.getAchievementWithKey(&quot;softTouch&quot;)).name}" left="5" top="3" fontSize="10" />
+							<s:Label text="{(_achievementManager.getAchievementWithKey(&quot;softTouch&quot;)).description}" left="5" bottom="3" fontSize="8" />
+						</s:BorderContainer>
+						
+						<s:BorderContainer styleName="roundedBorder" minHeight="0" minWidth="0" width="150" height="30" backgroundColor="{setAchievementBackgroundColour(&quot;trifecta&quot;)}">
+							<s:Label text="{(_achievementManager.getAchievementWithKey(&quot;trifecta&quot;)).name}" left="5" top="3" fontSize="10" />
+							<s:Label text="{(_achievementManager.getAchievementWithKey(&quot;trifecta&quot;)).description}" left="5" bottom="3" fontSize="8" />
+						</s:BorderContainer>
+						
+						<s:BorderContainer styleName="roundedBorder" minHeight="0" minWidth="0" width="150" height="30" backgroundColor="{setAchievementBackgroundColour(&quot;sniper&quot;)}">
+							<s:Label text="{(_achievementManager.getAchievementWithKey(&quot;sniper&quot;)).name}" left="5" top="3" fontSize="10" />
+							<s:Label text="{(_achievementManager.getAchievementWithKey(&quot;sniper&quot;)).description}" left="5" bottom="3" fontSize="8" />
+						</s:BorderContainer>
+						
+					</s:VGroup>
+				</s:BorderContainer>
 			
 			</s:VGroup>
 			

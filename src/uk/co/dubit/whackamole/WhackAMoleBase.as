@@ -68,6 +68,7 @@ package uk.co.dubit.whackamole
 		{		
 			var moleGameView:MoleGameView = new MoleGameView();
 			moleGameView.moleGame = new MoleGame(this, _currentDifficulty, _achievementManager);
+			moleGameView.achievementManager = _achievementManager;
 			loadView(moleGameView);
 		}
 		
