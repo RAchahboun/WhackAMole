@@ -154,7 +154,7 @@ package uk.co.dubit.whackamole.achievments.achievement_manager
 			_achievements["sniper"].checkAchievement();
 		}
 		
-		public function reset():void
+		public function resetStats():void
 		{
 			for each(var stat:Statistic in _stats)
 			{

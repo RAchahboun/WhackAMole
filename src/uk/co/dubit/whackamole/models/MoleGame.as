@@ -6,12 +6,13 @@ package uk.co.dubit.whackamole.models
 	
 	import mx.collections.ArrayCollection;
 	
+
 	import uk.co.dubit.whackamole.WhackAMoleBase;
 	import uk.co.dubit.whackamole.achievments.achievement_manager.Achievement_Manager;
 	import uk.co.dubit.whackamole.models.moles.Fire_Mole;
 	import uk.co.dubit.whackamole.models.moles.Mole;
 	import uk.co.dubit.whackamole.models.moles.Zombie_Mole;
-
+	
 	/**
 	 * Contains all the logic for the game itself; controls
 	 * the addition of moles, keeps track of the player's
@@ -152,7 +153,7 @@ package uk.co.dubit.whackamole.models
 		{
 			//dispatchEvent(new MoleGameEvent(MoleGameEvent.GAME_OVER, score));
 			_achievementManager.checkEndOfRoundAchievements();
-			_achievementManager.reset();
+			_achievementManager.resetStats();
 			trace("Reset!");
 			gameApp.gameOver(score);
 		}

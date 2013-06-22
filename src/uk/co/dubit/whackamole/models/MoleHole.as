@@ -1,10 +1,16 @@
 package uk.co.dubit.whackamole.models
 {
 	import flash.events.TimerEvent;
+	import flash.media.Sound;
 	import flash.utils.Timer;
 	
+	import uk.co.dubit.whackamole.GameSounds;
 	import uk.co.dubit.whackamole.achievments.achievement_manager.Achievement_Manager;
 	import uk.co.dubit.whackamole.models.moles.Mole;
+	
+	import uk.co.dubit.whackamole.GameSounds;
+	import flash.media.Sound;
+	import flash.media.SoundChannel;
 	/**
 	 * Models a hole which may or may not
 	 * be filled by a mole. It's empty if
@@ -19,8 +25,16 @@ package uk.co.dubit.whackamole.models
 		private const SHOW_TIME:int = 1000;
 		private var _achievementManager:Achievement_Manager;
 		
+		
+		//Sound Effects
+		private var _hitSound:Sound;
+		private var _missSound:Sound;
+		
 		public function MoleHole(moleGame:MoleGame, showTimeModifier:int, achievementManager:Achievement_Manager)
 		{
+			_hitSound = new GameSounds.SFX_HIT;
+			_missSound = new GameSounds.SFX_MISS;
+			
 			_moleGame = moleGame;
 			//This time controls the amount of time
 			//a mole fills this hole for
@@ -74,6 +88,7 @@ package uk.co.dubit.whackamole.models
 				//Whack the mole, and if it results in a
 				//kill, rack up the score
 				mole.hit();
+				_hitSound.play();	//Play the hit sound
 				if(mole.dead)
 				{
 					moleGame.addScore(mole.points);
@@ -101,6 +116,8 @@ package uk.co.dubit.whackamole.models
 			}
 			else
 			{
+				//Player has missed the mole
+				_missSound.play();
 				_achievementManager.moleMissed();
 			}
 		}
