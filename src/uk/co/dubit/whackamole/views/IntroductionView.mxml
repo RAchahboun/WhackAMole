@@ -14,8 +14,8 @@
 			<s:Label styleName="titleLabel" text="Welcome to Whack-A-Mole" horizontalCenter="0" verticalCenter="0"/>
 		</s:BorderContainer>
 		
-		<s:BorderContainer styleName="roundedBorder" minHeight="0" minWidth="0" width="100%" height="100%" >
-			<s:Label text="You know the drill - click the moles as soon as they appear, gain points. Hit as many as you can within the time limit. Good luck!"
+		<s:BorderContainer styleName="roundedBorder" id="mainContainer" minHeight="0" minWidth="0" width="100%" height="100%" >
+			<s:Label id="mainText" text="You know the drill - click the moles as soon as they appear, gain points. Hit as many as you can within the time limit. Good luck!"
 					 horizontalCenter="0" verticalCenter="0" width="60%" textAlign="center" />
 			<s:VGroup horizontalCenter="0" bottom="45">
 			<s:RadioButton groupName = "difficulty"

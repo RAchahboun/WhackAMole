@@ -11,7 +11,7 @@
 	<s:BorderContainer
 			styleName="roundedBorder stretchToContainer"
 			minHeight="0" minWidth="0"
-			useHandCursor="{ moleHole.mole != null }" buttonMode="true" mouseChildren="false" >
+			useHandCursor="{ moleHole.mole != null }" buttonMode="true" mouseChildren="false" backgroundColor="#333333" >
 		<s:BitmapImage source="@Embed('/../assets/standard_mole.png')" visible="{(moleHole.mole != null) &amp;&amp; (moleHole.mole.type == 1) }" horizontalCenter="0" verticalCenter="0" />
 		<s:BitmapImage source="@Embed('/../assets/fire_mole.png')" visible="{(moleHole.mole != null) &amp;&amp; (moleHole.mole.type == 2) }" horizontalCenter="0" verticalCenter="0" />
 		<s:BitmapImage source="@Embed('/../assets/zombie_mole.png')" visible="{(moleHole.mole != null) &amp;&amp; (moleHole.mole.type == 3) }" horizontalCenter="0" verticalCenter="0" />

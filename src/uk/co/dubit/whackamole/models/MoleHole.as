@@ -10,7 +10,6 @@ package uk.co.dubit.whackamole.models
 	
 	import uk.co.dubit.whackamole.GameSounds;
 	import flash.media.Sound;
-	import flash.media.SoundChannel;
 	/**
 	 * Models a hole which may or may not
 	 * be filled by a mole. It's empty if

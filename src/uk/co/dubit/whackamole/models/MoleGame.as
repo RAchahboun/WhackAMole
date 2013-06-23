@@ -36,10 +36,10 @@ package uk.co.dubit.whackamole.models
 		private const TOTAL_MOLES:int = 60;
 		
 		//Difficulty constants
-		private const EASY_SPAWN_MODIFIER:int = 200;
-		private const HARD_SPAWN_MODIFIER:int = -200;
-		private const EASY_LIFE_MODIFIER:int = 50;
-		private const HARD_LIFE_MODIFIER:int = -50;
+		private const EASY_SPAWN_MODIFIER:int = 300;
+		private const HARD_SPAWN_MODIFIER:int = -300;
+		private const EASY_LIFE_MODIFIER:int = 100;
+		private const HARD_LIFE_MODIFIER:int = -100;
 		
 		public function MoleGame(application:WhackAMoleBase, difficulty:int, achievementManager:Achievement_Manager)
 		{

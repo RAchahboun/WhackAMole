@@ -23,7 +23,7 @@ package uk.co.dubit.whackamole
 		 */
 		
 		//Background music
-		//[Embed(source="../assets/sounds/bgm.mp3")]
+		//[Embed(source="../assets/sounds/main.wav")]
 		//public static var BG_GAME_MUSIC : Class;
 	}
 }

@@ -53,7 +53,7 @@ package uk.co.dubit.whackamole.achievments.achievement_manager
 			
 			_achievements["master"] = new Achievement(
 				"Master",
-				"Kill more than 40 zombie moles in a\nsingle game",
+				"Kill more than 40 zombie moles in a single game",
 				new Array(new Array(_stats["zombieMolesKilledThisRound"], 40, ">"))
 			);
 			

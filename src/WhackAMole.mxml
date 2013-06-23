@@ -7,7 +7,7 @@
 	
 	<fx:Style source="application.css" />
 	
-	<s:BorderContainer styleName="roundedBorder" left="10" top="10" right="10" bottom="10" >
+	<s:BorderContainer styleName="roundedBorder" left="10" top="10" right="10" bottom="10" backgroundColor="black">
 		<s:Group id="viewContainer" styleName="stretchToContainer" />
 	</s:BorderContainer>
 	

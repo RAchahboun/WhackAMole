@@ -59,7 +59,7 @@ When spawning a new mole, have a 60% chance of creating a standard mole, a 25% c
 
 
 *Your comments:*
-Initially I wanted to use an abstract mole class and have all moles derive from this abstract class, however further research indicated that this was either not possible or had to be 'hacked' in AS3. I therefore decided to use the standard mole as a base class, and derived the special moles from this class. I could then override the hit functions to react in the same way. I added a new variable called "type" to the standard mole class, which would be an integer of value 1 for normal moles, 2 for fire moles and 3 for zombie moles. This value would be set in the constructors of each mole class to the corresponding value. The MoleHoleItemRenderer can then tell which type of mole to draw by accessing the type property of the the mole.
+Initially I wanted to use an abstract mole class and have all moles derive from this abstract class, however further research indicated that this was either not possible in AS3. I therefore decided to use the standard mole as a base class, and derived the special moles from this class. I could then override the hit functions to react in the same way. I added a new variable called "type" to the standard mole class, which would be an integer of value 1 for normal moles, 2 for fire moles and 3 for zombie moles. This value would be set in the constructors of each mole class to the corresponding value. The MoleHoleItemRenderer can then tell which type of mole to draw by accessing the type property of the the mole.
 
 
 
@@ -92,8 +92,20 @@ Criteria required: Miss more than 30 moles during a game
 
 
 *Your comments:*
-I designed my achievement system to be as future proof as possible. By seperating statistics and the achievements affected by them I have reduced data redundancy. In the achievement set given only one criteria is required for each achievement, however, it is entirely possible that further achievements may have multiple criteria for achievement completion (eg, kill one mole of each type). I have added a few other achievements to my system to demonstrate that this is possible with my system.
+I designed my achievement system to be as future proof as possible. By seperating statistics and the achievements affected by them I have reduced data redundancy. In the achievement set given only one criteria is required for each achievement, however, it is entirely possible that further achievements may have multiple criteria for achievement completion (eg, kill one mole of each type). I have added a few other achievements to my system to demonstrate that this is possible with my system. The background colour of each achievement is green for completed achievements and red for incomplete ones.
+
+Additional Features:
+-Sound effects when a user hits or misses a mole.
+-Used an embedded font for titles.
+-Used a wood image background to imitate a fairground game.
+-Added extra achievements to demonstrate my achievement system functionality.
 
 
+Future Ideas For Improvements:
+I had a few improvements planned that sadly I ran out of time to complete:
+-I would like to use a script to populate the achievements list in the mxml file, however, my  initial attempts using AS3 to write to the mxml were not successful.
+-I would like to make the achievements list to update and change colour as the game is played. I believe that it should be possible to do this using events.
+-Currently misses are only registered when the user  file licks on an empty hole. I would like to change this so that clicks outside of a hole are also registered as misses. This would require placing the holes over the top of a different component that could handle click events.
+-I'm not particularly satisfied with the visual look of the game at the moment. Although I am happy with the wood background and dark holes the menus look bland and uninteresting. I experimented with bright reds and yellows to represent fairground colours but they were either too bright or it was difficult to read the text. I was also unable to change the colour of the embedded font. I would also like to use custom images for the menu buttons, instead of the default UI ones that I am currently using.
 
 Thanks for your interest, and once again - good luck!

@@ -34,8 +34,22 @@ s|Application {
 }
 
 
-.titleLabel {
-	
+.titleLabel {	
 	font-size: 18pt;
-	
+	fontFamily: customFont;
+}
+
+@font-face {
+	src:url("../assets/fonts/Chunkfive/Chunkfive.otf");
+	fontFamily: customFont;
+	embedAsCFF: true;
+}
+
+#mainContainer {
+	backgroundColor : #297ACC;
+}
+
+#mainText {
+	color : white;
+	fontSize : 18;
 }
